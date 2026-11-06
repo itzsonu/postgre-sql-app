@@ -1,36 +1,313 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PostgreSQL Student Management App
 
-## Getting Started
+A full-stack Student Management application built using **Next.js App Router**, **TypeScript**, and **PostgreSQL**. The application demonstrates how to perform database operations through API routes and display student records in a modern web interface.
 
-First, run the development server:
+## Project Overview
+
+This project provides a simple example of integrating a PostgreSQL database with a Next.js application. It allows users to manage student information and demonstrates server-side database connectivity, API development, and frontend rendering.
+
+The application uses:
+
+- Next.js 15
+- TypeScript
+- PostgreSQL
+- App Router
+- Server-side API Routes
+
+---
+
+## Features
+
+- Modern Next.js App Router architecture
+- PostgreSQL database integration
+- REST-style API endpoints
+- View student records
+- Database connection management
+- Environment variable configuration
+- TypeScript support
+- Scalable folder structure
+
+---
+
+## Project Structure
+
+```text
+postgre-sql-app/
+│
+├── app/
+│   ├── api/
+│   │   └── students/
+│   │       └── route.ts
+│   │
+│   ├── students/
+│   │   └── page.tsx
+│   │
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+│
+├── lib/
+│   └── db.ts
+│
+├── public/
+│
+├── .env
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+└── README.md
+```
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- CSS
+
+### Backend
+
+- Next.js API Routes
+- Node.js
+
+### Database
+
+- PostgreSQL
+
+### Development Tools
+
+- ESLint
+- npm
+
+---
+
+## Prerequisites
+
+Before running the project, ensure the following software is installed:
+
+- Node.js (v18 or later)
+- npm
+- PostgreSQL
+- Git
+
+Verify installation:
+
+```bash
+node -v
+npm -v
+psql --version
+```
+
+---
+
+## Database Setup
+
+### Step 1: Create Database
+
+Open PostgreSQL and run:
+
+```sql
+CREATE DATABASE studentdb;
+```
+
+---
+
+### Step 2: Connect to Database
+
+```sql
+\c studentdb
+```
+
+---
+
+### Step 3: Create Students Table
+
+```sql
+CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    course VARCHAR(100),
+    email VARCHAR(150)
+);
+```
+
+---
+
+### Step 4: Insert Sample Data
+
+```sql
+INSERT INTO students (name, course, email)
+VALUES
+('Rahul Kumar','MCA','rahul@example.com'),
+('Anjali Sharma','MCA','anjali@example.com'),
+('Amit Singh','BCA','amit@example.com');
+```
+
+---
+
+## Environment Configuration
+
+Create a `.env` file in the root directory.
+
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=your_password
+DB_NAME=studentdb
+```
+
+Replace the values with your PostgreSQL configuration.
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/itzsonu/postgre-sql-app.git
+```
+
+Move into the project directory:
+
+```bash
+cd postgre-sql-app
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## Running the Application
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## API Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+### Get Student Records
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```http
+GET /api/students
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Example Response
 
-## Deploy on Vercel
+```json
+[
+  {
+    "student_id": 1,
+    "name": "Rahul Kumar",
+    "course": "MCA",
+    "email": "rahul@example.com"
+  }
+]
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Future Enhancements
+
+The project can be extended to support:
+
+- Add Student
+- Update Student
+- Delete Student
+- Search Student
+- Pagination
+- Authentication
+- Role-Based Access Control
+- Dashboard Analytics
+
+---
+
+## Database Connection Flow
+
+```text
+Browser
+   │
+   ▼
+Next.js Page
+   │
+   ▼
+API Route
+   │
+   ▼
+db.ts
+   │
+   ▼
+PostgreSQL Database
+```
+
+---
+
+## Screenshots
+
+Add screenshots of:
+
+- Home Page
+- Student List Page
+- PostgreSQL Database
+- API Response
+- Project Structure
+
+Example:
+
+```md
+![Home Page](screenshots/home.png)
+![Students Page](screenshots/students.png)
+```
+
+---
+
+## Learning Outcomes
+
+Through this project, users will learn:
+
+- Next.js App Router fundamentals
+- API Route development
+- PostgreSQL integration
+- Database connectivity in Node.js
+- Environment variable management
+- TypeScript development
+- Full-stack application architecture
+
+---
+
+## Author
+
+**Sonu**
+
+MCA Student, PES University Bengaluru
+
+GitHub:
+
+https://github.com/itzsonu
+
+---
+
+## License
+
+This project is developed for educational and learning purposes.
+
+MIT License
